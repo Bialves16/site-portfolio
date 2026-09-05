@@ -22,12 +22,12 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative z-10 flex min-h-[calc(100svh-88px)] flex-col justify-center px-5 pb-16 pt-10 sm:px-8 lg:px-12 lg:pb-20 lg:pt-6"
+      className="relative z-10 flex h-[calc(100svh-88px)] min-h-[560px] flex-col justify-center px-5 sm:px-8 lg:px-12"
     >
-      <div className="mx-auto grid w-full max-w-[1400px] items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 xl:gap-12">
-        <div className="relative max-w-[720px]">
+      <div className="mx-auto grid w-full max-w-[1400px] items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 xl:gap-10">
+        <div className="relative flex max-w-[720px] flex-col justify-center">
           <motion.h1
-            className="font-sans text-[clamp(2.75rem,8vw,6rem)] font-black uppercase leading-[0.9] tracking-[-0.035em]"
+            className="font-sans text-[clamp(2.55rem,7vw,5.25rem)] font-black uppercase leading-[0.92] tracking-[-0.035em]"
             initial="hidden"
             animate="show"
           >
@@ -37,7 +37,7 @@ export default function Hero() {
             <motion.span custom={1} variants={fadeUp} className="block text-text">
               Systems.
             </motion.span>
-            <motion.span custom={2} variants={fadeUp} className="mt-1 block text-accent">
+            <motion.span custom={2} variants={fadeUp} className="mt-0.5 block text-accent">
               I Solve
             </motion.span>
             <motion.span custom={3} variants={fadeUp} className="block text-accent">
@@ -50,7 +50,7 @@ export default function Hero() {
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="mt-8 max-w-md text-[15px] leading-relaxed text-text-muted sm:text-base"
+            className="mt-5 max-w-md text-[14px] leading-relaxed text-text-muted sm:mt-6 sm:text-[15px]"
           >
             Estudante de Ciência de Dados e
             <br className="hidden sm:block" /> Inteligência Artificial na
@@ -65,7 +65,7 @@ export default function Hero() {
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="mt-9 flex flex-wrap items-center gap-6"
+            className="mt-6 flex flex-wrap items-center gap-6 sm:mt-7"
           >
             <Link
               href="/#projects"
@@ -84,7 +84,7 @@ export default function Hero() {
         </div>
 
         <motion.div
-          className="relative mx-auto w-full max-w-[480px] lg:max-w-none"
+          className="relative mx-auto flex w-full max-w-[480px] items-center justify-center lg:max-w-none"
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.25 }}

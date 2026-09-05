@@ -32,7 +32,7 @@ export default function Footer() {
         </Link>
 
         <p className="text-center font-mono text-[10px] tracking-[0.08em] text-text-dim sm:text-[11px]">
-          © 2024 Beatriz Alves. All rights reserved.
+          © 2026 Beatriz Alves. All rights reserved.
         </p>
 
         <div className="flex items-center gap-4">
