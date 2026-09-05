@@ -6,16 +6,21 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navItems } from "@/data/navigation";
 
+function getRouteActive(pathname: string | null): string | null {
+  if (pathname?.startsWith("/notes")) return "NOTES";
+  if (pathname?.startsWith("/projects")) return "PROJECTS";
+  return null;
+}
+
 export default function Header() {
   const pathname = usePathname();
+  const routeActive = getRouteActive(pathname);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("HOME");
+  const [scrollActive, setScrollActive] = useState("HOME");
+  const active = routeActive ?? scrollActive;
 
   useEffect(() => {
-    if (pathname?.startsWith("/notes")) {
-      setActive("NOTES");
-      return;
-    }
+    if (routeActive) return;
 
     const onScroll = () => {
       const sections = [
@@ -32,13 +37,16 @@ export default function Header() {
         const rect = el.getBoundingClientRect();
         if (rect.top <= 140) current = section.label;
       }
-      setActive(current);
+      setScrollActive(current);
     };
 
-    onScroll();
+    const frame = requestAnimationFrame(onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [routeActive]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";

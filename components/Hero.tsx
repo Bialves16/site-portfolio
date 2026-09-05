@@ -10,7 +10,11 @@ const fadeUp = {
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.08 * i, duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      delay: 0.08 * i,
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
@@ -23,7 +27,7 @@ export default function Hero() {
       <div className="mx-auto grid w-full max-w-[1400px] items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 xl:gap-12">
         <div className="relative max-w-[720px]">
           <motion.h1
-            className="font-sans text-[clamp(2.6rem,7.5vw,5.75rem)] font-black uppercase leading-[0.92] tracking-[-0.03em]"
+            className="font-sans text-[clamp(2.75rem,8vw,6rem)] font-black uppercase leading-[0.9] tracking-[-0.035em]"
             initial="hidden"
             animate="show"
           >
@@ -33,7 +37,7 @@ export default function Hero() {
             <motion.span custom={1} variants={fadeUp} className="block text-text">
               Systems.
             </motion.span>
-            <motion.span custom={2} variants={fadeUp} className="block text-accent">
+            <motion.span custom={2} variants={fadeUp} className="mt-1 block text-accent">
               I Solve
             </motion.span>
             <motion.span custom={3} variants={fadeUp} className="block text-accent">
@@ -89,14 +93,14 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <a
+      <Link
         href="/#about"
         className="absolute bottom-6 right-5 hidden flex-col items-center gap-3 font-mono text-[10px] tracking-[0.35em] text-text-dim transition-colors hover:text-accent sm:right-8 sm:flex lg:right-12"
         aria-label="Rolar para a próxima seção"
       >
         <span className="[writing-mode:vertical-rl] rotate-180">SCROLL</span>
         <span className="h-10 w-px bg-accent" />
-      </a>
+      </Link>
     </section>
   );
 }

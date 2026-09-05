@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "Beatriz Alves | Software, Data & AI",
   description:
     "Portfólio de Beatriz Alves, estudante de Ciência de Dados e Inteligência Artificial, desenvolvedora de software e criadora de soluções digitais.",
+  metadataBase: new URL("https://beatrizalves.dev"),
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
     title: "Beatriz Alves | Software, Data & AI",
     description:
@@ -44,7 +48,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="relative min-h-full bg-bg text-text">
+      <body className="relative min-h-full bg-bg font-sans text-text">
         <BackgroundEffects />
         <CustomCursor />
         <div className="relative z-10">{children}</div>
