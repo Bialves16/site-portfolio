@@ -1,21 +1,25 @@
 import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { contactConfig, getMailtoHref } from "@/data/contact";
 
 const socials = [
   {
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    href: contactConfig.linkedin,
     icon: Linkedin,
+    external: true,
   },
   {
     label: "GitHub",
-    href: "https://github.com",
+    href: contactConfig.github,
     icon: Github,
+    external: true,
   },
   {
-    label: "Email",
-    href: "mailto:beatriz.alves@email.com",
+    label: "Enviar e-mail",
+    href: getMailtoHref(),
     icon: Mail,
+    external: false,
   },
 ];
 
@@ -36,14 +40,15 @@ export default function Footer() {
         </p>
 
         <div className="flex items-center gap-4">
-          {socials.map(({ label, href, icon: Icon }) => (
+          {socials.map(({ label, href, icon: Icon, external }) => (
             <a
               key={label}
               href={href}
-              target={href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
               aria-label={label}
-              className="text-accent transition-colors hover:text-accent-soft"
+              title={label}
+              className="text-accent transition-colors hover:text-accent-soft focus-visible:text-accent-soft"
             >
               <Icon size={18} strokeWidth={1.5} />
             </a>

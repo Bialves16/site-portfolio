@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import ContactModal from "@/components/contact/ContactModal";
 
 function WireGlobe() {
   return (
@@ -12,13 +13,11 @@ function WireGlobe() {
       fill="none"
       aria-hidden="true"
     >
-      {/* Crop marks */}
       <path d="M20 40 V20 H40" stroke="rgba(0,0,0,0.45)" strokeWidth="1" />
       <path d="M180 20 H200 V40" stroke="rgba(0,0,0,0.45)" strokeWidth="1" />
       <path d="M20 180 V200 H40" stroke="rgba(0,0,0,0.45)" strokeWidth="1" />
       <path d="M180 200 H200 V180" stroke="rgba(0,0,0,0.45)" strokeWidth="1" />
 
-      {/* Globe */}
       <ellipse
         cx="110"
         cy="110"
@@ -75,7 +74,6 @@ function WireGlobe() {
         stroke="rgba(0,0,0,0.35)"
         strokeWidth="0.7"
       />
-      {/* Orbit */}
       <ellipse
         cx="110"
         cy="110"
@@ -92,6 +90,9 @@ function WireGlobe() {
 }
 
 export default function ContactCTA() {
+  const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
+
   return (
     <section id="contact" className="relative z-10 px-5 py-16 sm:px-8 lg:px-12">
       <motion.div
@@ -101,7 +102,6 @@ export default function ContactCTA() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.55 }}
       >
-        {/* Grain / texture on yellow */}
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.18] mix-blend-multiply"
           aria-hidden="true"
@@ -128,8 +128,8 @@ export default function ContactCTA() {
           }}
         />
 
-        <div className="relative grid gap-10 px-6 py-10 sm:px-10 sm:py-12 lg:grid-cols-[1.1fr_1fr_0.7fr] lg:items-center lg:gap-8 lg:px-12 lg:py-14">
-          <h2 className="font-sans text-[clamp(1.75rem,4vw,3.25rem)] font-black uppercase leading-[0.95] tracking-[-0.02em] text-bg">
+        <div className="relative grid gap-8 px-6 py-10 text-center sm:px-10 sm:py-12 md:gap-10 md:text-left lg:grid-cols-[1.1fr_1fr_0.7fr] lg:items-center lg:gap-8 lg:px-12 lg:py-14">
+          <h2 className="mx-auto max-w-[16ch] font-sans text-[clamp(1.75rem,4vw,3.25rem)] font-black uppercase leading-[0.95] tracking-[-0.02em] text-bg md:mx-0 md:max-w-none">
             Vamos Construir
             <br />
             Algo Incrível
@@ -137,18 +137,19 @@ export default function ContactCTA() {
             Juntos.
           </h2>
 
-          <div className="max-w-sm">
+          <div className="mx-auto max-w-sm md:mx-0">
             <p className="text-sm leading-relaxed text-bg/80 sm:text-[15px]">
               Estou aberta a novos projetos, colaborações e oportunidades que
               desafiem meus limites.
             </p>
-            <Link
-              href="mailto:beatriz.alves@email.com"
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
               className="mt-7 inline-flex items-center gap-2 bg-bg px-5 py-3 font-mono text-[11px] font-semibold tracking-[0.14em] text-text transition-transform hover:-translate-y-0.5"
             >
               ENTRAR EM CONTATO
               <ArrowRight size={14} />
-            </Link>
+            </button>
           </div>
 
           <div className="hidden justify-end lg:flex">
@@ -156,6 +157,8 @@ export default function ContactCTA() {
           </div>
         </div>
       </motion.div>
+
+      <ContactModal open={open} onClose={close} />
     </section>
   );
 }

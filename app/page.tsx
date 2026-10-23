@@ -12,7 +12,7 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Projects />
+        <Projects limit={3} />
         <ContactCTA />
       </main>
       <Footer />

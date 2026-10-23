@@ -57,10 +57,22 @@ export default function Header() {
 
   return (
     <header className="relative z-50">
-      <div className="mx-auto flex max-w-[1400px] items-start justify-between px-5 pt-6 sm:px-8 lg:px-12 lg:pt-8">
+      <div className="mx-auto flex max-w-[1400px] items-start px-5 pt-6 sm:px-8 lg:px-12 lg:pt-8">
+        {/* Menu first on mobile (left) */}
+        <button
+          type="button"
+          className="flex h-10 w-10 shrink-0 items-center justify-center border border-border text-text md:hidden"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X size={18} /> : <Menu size={18} />}
+        </button>
+
+        {/* Logo: right on mobile, left on desktop */}
         <Link
           href="/#home"
-          className="group relative font-sans text-[13px] font-bold leading-[1.05] tracking-[0.12em] text-text transition-colors hover:text-accent sm:text-sm"
+          className="group relative ml-auto font-sans text-[13px] font-bold leading-[1.05] tracking-[0.12em] text-text transition-colors hover:text-accent sm:text-sm md:ml-0"
           aria-label="Beatriz Alves — início"
         >
           <span className="block">BEATRIZ</span>
@@ -71,7 +83,7 @@ export default function Header() {
         </Link>
 
         <nav
-          className="hidden items-center gap-7 md:flex lg:gap-9"
+          className="ml-auto hidden items-center gap-7 md:flex lg:gap-9"
           aria-label="Navegação principal"
         >
           {navItems.map((item) => {
@@ -92,53 +104,47 @@ export default function Header() {
             );
           })}
         </nav>
-
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center border border-border text-text md:hidden"
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={18} /> : <Menu size={18} />}
-        </button>
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-bg/98 md:hidden">
-          <div className="flex items-start justify-between px-5 pt-6">
-            <span className="font-sans text-[13px] font-bold leading-[1.05] tracking-[0.12em] text-text">
-              BEATRIZ
-              <br />
-              ALVES
-              <span className="ml-1.5 inline-block h-1.5 w-1.5 rounded-full bg-accent align-middle" />
-            </span>
+        <div className="fixed inset-0 z-50 md:hidden">
+          {/* Lado direito (e fundo) escurecido */}
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/75"
+            aria-label="Fechar menu"
+            onClick={() => setOpen(false)}
+          />
+
+          {/* Metade esquerda da tela, altura completa */}
+          <div className="absolute bottom-0 left-0 top-0 flex h-full w-1/2 max-w-[50vw] flex-col border-r border-border bg-bg px-5 pb-8 pt-6">
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center border border-border text-text"
+              className="flex h-10 w-10 shrink-0 items-center justify-center border border-border text-text"
               aria-label="Fechar menu"
               onClick={() => setOpen(false)}
             >
               <X size={18} />
             </button>
+
+            <nav
+              className="mt-12 flex flex-col gap-6"
+              aria-label="Menu mobile"
+            >
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={`block font-mono text-sm tracking-[0.2em] ${
+                    active === item.label ? "text-accent" : "text-text"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
-          <nav
-            className="mt-16 flex flex-col gap-6 px-8"
-            aria-label="Menu mobile"
-          >
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className={`font-mono text-sm tracking-[0.2em] ${
-                  active === item.label ? "text-accent" : "text-text"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
         </div>
       )}
     </header>

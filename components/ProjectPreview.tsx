@@ -13,7 +13,7 @@ export default function ProjectPreview({ project, className = "" }: Props) {
       <img
         src={project.image}
         alt={`Preview do projeto ${project.title}`}
-        className={`h-full w-full object-cover ${className}`}
+        className={`h-full w-full object-cover object-top ${className}`}
       />
     );
   }

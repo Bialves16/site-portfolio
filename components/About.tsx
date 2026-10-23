@@ -45,21 +45,21 @@ export default function About() {
           <h2 className="font-mono text-xs tracking-[0.22em] text-accent">
             SOBRE MIM
           </h2>
-          <div className="mt-6 space-y-5 text-[15px] leading-relaxed text-text-muted sm:text-base">
+          <div className="mt-6 space-y-5 text-justify text-[15px] leading-relaxed text-text-muted sm:text-base">
             <p>
-              Estudante de Ciência de Dados e Inteligência Artificial com foco
-              em desenvolvimento de software, dados e inteligência artificial. Gosto de resolver problemas difíceis e criar produtos que
-              realmente fazem sentido. Gosto de resolver problemas difíceis e criar produtos que
-              realmente fazem sentido.
+            Estudo Ciência de Dados e Inteligência Artificial na PUC-Campinas e 
+            gosto de construir coisas que fazem sentido fora do código. 
+            Exploro desenvolvimento de software, dados e IA através de projetos 
+            que vão de sistemas completos a análises e aplicações inteligentes.
             </p>
             <p>
-              Gosto de resolver problemas difíceis e criar produtos que
-              realmente fazem sentido.
+            Este portfólio é um registro do que estou aprendendo, construindo e 
+            descobrindo ao longo do caminho.
             </p>
           </div>
           <Link
             href="/notes"
-            className="mt-8 inline-flex w-fit items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-text underline decoration-accent decoration-1 underline-offset-[6px] transition-colors hover:text-accent"
+            className="mt-8 hidden w-fit items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-text underline decoration-accent decoration-1 underline-offset-[6px] transition-colors hover:text-accent md:inline-flex"
           >
             SAIBA MAIS
             <ArrowRight size={13} />

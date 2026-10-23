@@ -16,8 +16,39 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "finance-os",
+    id: "flux",
     number: "01",
+    title: "Flux",
+    shortDescription:
+      "Sistema completo para freelancers gerenciarem projetos, clientes, finanças e rotina em um só lugar.",
+    description:
+      "Flux é uma plataforma pensada para freelancers que precisam centralizar o negócio: acompanhar faturamento, recebimentos e valores pendentes, organizar projetos e clientes, priorizar o que precisa de atenção e planejar a agenda do dia. O dashboard reúne indicadores financeiros, progresso dos projetos, próximas tarefas e insights para apoiar decisões — como cobranças em atraso, prazos próximos e revisão de precificação.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "PostgreSQL",
+    ],
+    features: [
+      "Dashboard com resumo do dia e do negócio",
+      "Indicadores de faturado, recebido e pendente",
+      "Gestão de projetos com progresso visual",
+      "Controle de clientes e cobranças",
+      "Agenda e próximas tarefas",
+      "Alertas do que precisa de atenção",
+      "Meta mensal e acompanhamento de desempenho",
+      "Insights automáticos sobre horas e precificação",
+    ],
+    category: "Web Application",
+    image: "/images/freelancer_project.png",
+    url: "https://fluxfreelancers.vercel.app",
+    github: "https://github.com/Bialves16/flux_freelancers",
+  },
+  {
+    id: "finance-os",
+    number: "02",
     title: "Finance OS",
     shortDescription:
       "Plataforma para gestão financeira de empresas com múltiplas operações.",
@@ -46,7 +77,7 @@ export const projects: Project[] = [
   },
   {
     id: "pantry-ai",
-    number: "02",
+    number: "03",
     title: "PantryAI",
     shortDescription:
       "Sistema inteligente para inventário e gestão de estoque com IA.",
@@ -65,7 +96,7 @@ export const projects: Project[] = [
   },
   {
     id: "taskly",
-    number: "03",
+    number: "04",
     title: "Taskly",
     shortDescription:
       "Gerenciador de tarefas pessoal com filtros, prioridades e categorias.",
